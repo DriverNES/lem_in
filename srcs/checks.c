@@ -6,7 +6,7 @@
 /*   By: ndriver <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/20 11:04:05 by ndriver           #+#    #+#             */
-/*   Updated: 2018/09/20 12:32:17 by ndriver          ###   ########.fr       */
+/*   Updated: 2018/09/20 13:18:37 by ndriver          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,28 +66,6 @@ void	check_se(t_farm *farm)
 	close(fd);
 }
 
-int		is_room(char *str)
-{
-	char	**tab;
-	char	*tmp;
-
-	if (ft_cntwrd(str, ' ') != 3)
-		return (0);
-	tab = ft_strsplit(str, ' ');
-	for (int i = 0; i < 3; i++)
-	{
-		tmp = ft_itoa(ft_atoi(tab[i]));
-		if (!ft_strcmp(tab[i], tmp))
-		{
-			if (ft_atoi(tab[i]) < 0)
-				error(3);
-		}
-		else
-			error(3);
-		free(tmp);
-	}
-	return (1);
-}
 void	check_rooms(t_farm *farm)
 {
 	int		i;
@@ -100,6 +78,26 @@ void	check_rooms(t_farm *farm)
 	while (get_next_line(fd, &line) > 0)
 		if (is_room(line))
 			i++;
-	close (fd);
+	close(fd);
 	farm->numrooms = i;
+	if (farm->numrooms < 1)
+		error(3);
+}
+
+void    check_links(t_farm *farm)
+{
+    int     i;
+    int     fd;
+    char    *line;
+
+    i = 0;
+    fd = open("file.txt", O_RDONLY);
+    while (get_next_line(fd, &line) > 0)
+        if (is_link(line))
+            i++;
+    close(fd);
+    farm->numlinks = i;
+    if (farm->numlinks < 1)
+        error(4);
+    ft_putnbr(farm->numlinks);
 }

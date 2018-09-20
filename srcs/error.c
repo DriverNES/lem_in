@@ -6,7 +6,7 @@
 /*   By: ndriver <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/20 09:25:31 by ndriver           #+#    #+#             */
-/*   Updated: 2018/09/20 12:08:49 by ndriver          ###   ########.fr       */
+/*   Updated: 2018/09/20 12:51:11 by ndriver          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,5 +20,9 @@ void	error(int n)
 		ft_putendl("Invalid ants.");
 	else if (n == 3)
 		ft_putendl("Invalid room(s).");
+	else if (n == 3)
+		ft_putendl("No rooms.");
+	else if (n == 4)
+		ft_putendl("Invalid link(s).");
 	exit(0);
 }
