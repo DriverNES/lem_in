@@ -1,0 +1,11 @@
+Must have author file
+Must be able to read "./lem-in < ant_farm.txt"
+Errors:
+	No rooms
+	No ants
+	No mandatory comments (##start/##end)
+	No solution
+Must accept comments with #
+Must accept other commands
+Ant farm composition displayed
+Commands and Comments printed on std. out.
